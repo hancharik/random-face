@@ -21,8 +21,26 @@ public class DPanel extends JComponent {
 
     
     Color hair;
+    Color skin;
+    Color line;
     
+    int headX;
+    int headY;
+    int skinX;
+    int skinY;
     
+    int headsize;
+    int skinsize;
+    int hairthickness;
+    int mouthThickness;
+    int mouthWidth;
+    int eyeSize;
+    int mouthX;
+    int mouthY;
+    int eyeRx;
+    int eyeRy;
+    int eyeLx;
+    int eyeLy;
     
     public DPanel() {
 
@@ -30,42 +48,90 @@ public class DPanel extends JComponent {
 
        // drawSun(100,100,100,100);
         
-        
+        setVariables();
         
         
     }  // end constructor
     
+    
+    
+    private void setVariables(){
+        
+        
+    hair = new Color(10,10,10);
+    skin = new Color(255,175,175);
+    line = new Color(0,0,0);
+    
+    
+    hairthickness = 10;
+    
+    
+    
+    
+    
+    
+    
+    headsize = 400;
+    skinsize = headsize - hairthickness;
+    
+    
+    
+    mouthThickness = 6;
+    mouthWidth = headsize/2;
+    eyeSize = 10;
+    
+    
+    
+    headX = headsize/2;
+    headY = headsize/2;
+    
+    mouthX =  headX*15/10;
+    mouthY = headY*22/10;
+    eyeRx = headX*21/10;
+    eyeRy = headY*17/10;
+    eyeLx = headX*18/10;
+    eyeLy = headY*17/10;
+     skinX = headX + (hairthickness/2);
+    skinY = headY + (hairthickness/2);  
+        
+        
+        
+    }// end set variables
+    
+    
+    
+    
+    
+    
     public void paintComponent(Graphics g){
         
-       // g.fillRect(100, 100, 100, 100);
-       hair = new Color(10,10,10);
-       g.setColor(hair);
-        g.fillOval(200,200,200,200);
-        g.setColor(Color.green);
-        g.drawOval(210,210,180,190);
-        g.setColor(Color.blue);
-        g.fillOval(220,220,160,180);
+   
+      // draw hair
+        g.setColor(hair);
+        g.fillOval(headX,headY,headsize,headsize);
+      
+        // draw face
+        g.setColor(skin);
+        g.fillOval(skinX,skinY,skinsize,skinsize);
+        
+        // set color
+        g.setColor(line);
+        
+       //draw left eye
+        g.fillOval(eyeLx,eyeLy, eyeSize,eyeSize);
+        // draw right eye
+        g.fillOval(eyeRx,eyeRy, eyeSize,eyeSize);
+        
+         // draw mouth
+        g.fillRect(mouthX,mouthY, mouthWidth,mouthThickness);
+        
+        
+        
     }
     
     
     
     
     
-/*
-    public void drawSun(int x, int y, int width, int height) {
-        // get the graphics2D object for this picture
-        Graphics g = this.getGraphics();
-        Graphics2D g2 = (Graphics2D) g;
-        // create the gradient for painting from yellow to red with
-        // yellow at the top of the sun and red at the bottom
-        float xMid = (float) (width / 0.5 + x);
-        GradientPaint gPaint = new GradientPaint(xMid, y,
-                Color.yellow,
-                xMid, y + height,
-                Color.red);
-        // set the gradient and draw the ellipse
-       // g2.setPaint(gPaint);
-        g2.fill(new Ellipse2D.Double(x, y, width, height));
-    }
-*/
+
 }

@@ -339,11 +339,20 @@ public class PicPanel extends JPanel implements ActionListener {
         setRandomVariables(raceCounter);//setRandomVariables(race);
         raceCounter++;
         if(raceCounter > 11){
+            // show all races
             int allOfThem = 1 + rand.nextInt(11);
             setRandomVariables(allOfThem);
             
             
-            if(raceCounter > 16){    
+            if(raceCounter > 16){ 
+                // show just humans
+                  allOfThem = 1;
+            setRandomVariables(allOfThem);
+          
+            }
+            
+             if(raceCounter > 21){ 
+             
             raceCounter = 1;
             }
         }

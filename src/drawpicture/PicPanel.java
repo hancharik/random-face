@@ -96,7 +96,7 @@ public class PicPanel extends JPanel implements ActionListener {
        // setSize (200, 200);
           setVariables();
         //setRandomVariables();
-       t = new Timer(2000, this);
+       t = new Timer(drawpicture.DrawPicture.speed, this);
       t.start();
 
     }  // end constructor
@@ -104,7 +104,22 @@ public class PicPanel extends JPanel implements ActionListener {
     private void setVariables() {
 
         hair = new Color(10, 10, 10);
-        skin = new Color(255, 175, 175);
+       // skin = new Color(255, 175, 175);
+        
+        
+          
+        // real skin tones
+        
+       int a = 1 + rand.nextInt(175);
+       int z = a + 80;
+       skin = new Color(z,a, a);//= new Color(255, 175, 175);//= new Color(r, g, b);
+        
+        
+        
+        
+        
+        
+        
         line = new Color(0, 0, 0);
         shirtout = new Color(0, 0, 175);
         shirtfill = new Color(0, 175, 175);
@@ -114,8 +129,9 @@ public class PicPanel extends JPanel implements ActionListener {
         headsize = drawpicture.DrawPicture.size;// 100;
         skinsize = headsize - hairthickness;
 
-        mouthThickness = 6;
-        mouthWidth = headsize / 2;
+        mouthThickness  = 1 + rand.nextInt(3) + 1;
+        int tenth = (int)(headsize / 10);
+        mouthWidth = (int)(headsize / 2) + (rand.nextInt(tenth) - (tenth / 2));
         eyeSize = 4;
 
         headX = headsize / 2;
@@ -130,7 +146,7 @@ public class PicPanel extends JPanel implements ActionListener {
         skinX = headX + (hairthickness / 2);
         skinY = headY + (hairthickness / 2);
 
-        shirtOutX = headX - (int)(.45*headsize);
+        shirtOutX = headX - (int)(.48*headsize);
         shirtOutY =  headY + (int)(.80*headsize);
         shirtFillX = skinX  - (int)(.44*headsize);
         shirtFillY = skinY + (int)(.80*headsize);
@@ -157,8 +173,21 @@ public class PicPanel extends JPanel implements ActionListener {
         int r = 1 + rand.nextInt(255);
         int g = 1 + rand.nextInt(255);
         int b = 1 + rand.nextInt(255);
-        hair = new Color(10, 10, 10);
-        skin = new Color(r, g, b);
+        hair = new Color(0, 0, 0);
+        
+          
+        // real skin tones
+        
+        int a = 1 + rand.nextInt(175);
+        
+        int z = a + 80;
+        skin = new Color(z,a, a);//= new Color(255, 175, 175);//= new Color(r, g, b);
+       
+        
+        
+        
+        
+        //skin = new Color(r, g, b);
         notskin = new Color(g, b, b);
         line = new Color(0, 0, 0);
         shirtout = new Color(0,0,0);
@@ -171,7 +200,8 @@ public class PicPanel extends JPanel implements ActionListener {
         skinsize = headsize - hairthickness;
 
         mouthThickness  = 1 + rand.nextInt(3) + 1;
-        mouthWidth = headsize / 2;
+        int tenth = (int)(headsize / 5);
+        mouthWidth = (int)(headsize / 2) + (1 + rand.nextInt(tenth) - (tenth / 2));//mouthWidth = headsize / 2;
         eyeSize = 1 + rand.nextInt(3) + 2;
 
         headX = headsize / 2 ;
@@ -193,7 +223,7 @@ public class PicPanel extends JPanel implements ActionListener {
         skinY = headY + (hairthickness / 2);
 
         
-        shirtOutX = headX  - (int)(.45*headsize);
+        shirtOutX = headX  - (int)(.46*headsize);
         shirtOutY =  headY + (int)(.80*headsize);
         shirtFillX = skinX - (int)(.44*headsize);
         shirtFillY = skinY + (int)(.80*headsize);

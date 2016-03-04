@@ -366,8 +366,9 @@ public class PicPanel extends JPanel implements ActionListener {
 
     public void paintComponent(Graphics g) {
 
-        // draw background
-        g.setColor(notskin);
+        // draw background 
+        Color wangsBlue = new Color(162, 223, 254);
+        g.setColor(wangsBlue);
         g.fillRect(0, 0,1920,1080);
         
         

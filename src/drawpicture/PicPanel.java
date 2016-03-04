@@ -132,7 +132,8 @@ public class PicPanel extends JPanel implements ActionListener {
         mouthThickness  = 1 + rand.nextInt(3) + 1;
         int tenth = (int)(headsize / 10);
         mouthWidth = (int)(headsize / 2) + (rand.nextInt(tenth) - (tenth / 2));
-        eyeSize = 4;
+        int hundredth = (int)(headsize / 100);
+        eyeSize = 4 * hundredth;
 
         headX = headsize / 2;
         headY = headsize / 2;
@@ -198,11 +199,16 @@ public class PicPanel extends JPanel implements ActionListener {
         x = 1 + rand.nextInt(420) + 160;
          headsize = drawpicture.DrawPicture.size;
         skinsize = headsize - hairthickness;
-
-        mouthThickness  = 1 + rand.nextInt(3) + 1;
+        
+        
+        int hundredth = (int)(headsize / 100);
+        mouthThickness  = hundredth + rand.nextInt(2 * hundredth) ;
         int tenth = (int)(headsize / 5);
         mouthWidth = (int)(headsize / 2) + (1 + rand.nextInt(tenth) - (tenth / 2));//mouthWidth = headsize / 2;
-        eyeSize = 1 + rand.nextInt(3) + 2;
+        
+        
+        
+        eyeSize = 1 + rand.nextInt(3 * hundredth) + (2 * hundredth);
 
         headX = headsize / 2 ;
         headY = headsize / 2 ;

@@ -12,7 +12,7 @@ package drawpicture;
 public class DrawPicture {
 
      public static  DFrame diggityDog;// = new DFrame();
-     public static int size = 100;
+     public static int size = 273;
      public static int speed = 4000; // in miliseconds
      public static int thisManyFaces = 100;
      

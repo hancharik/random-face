@@ -22,18 +22,22 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class DFrame extends JFrame{
     
     public DPanel dPanel;// = new GameJPanel();
-   // public Clock clock = new Clock();
-    
+   public PicPanel pic;//  = new PicPanel();
+    public int size = drawpicture.DrawPicture.size;
+    private int lsize = size*21/10;
+    private int hsize = size*22/10;
     public DFrame(){
         super ("Random Face Drawing Test");
                 getContentPane().setLayout(new BorderLayout());
-                dPanel = new DPanel();
-              getContentPane().add(dPanel,"Center");
+               // dPanel = new DPanel();
+               pic  = new PicPanel();
+              getContentPane().add(pic,"Center");
                //  gamePanel.createScreen();   
               
 		//getContentPane().add(skyPanel,"Center");
                 setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize (1920, 1080);
+	        setSize (lsize, hsize);
+               //setSize (1920, 1080);
                // setLocation(400,400);
 		setVisible(true);
     }

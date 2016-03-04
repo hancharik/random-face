@@ -11,11 +11,12 @@ package drawpicture;
  */
 public class DrawPicture {
 
-    /**
-     * @param args the command line arguments
-     */
+     public static  DFrame diggityDog;// = new DFrame();
+     public static int size = 273;
+     
+     
     public static void main(String[] args) {
-        DFrame diggityDog = new DFrame();
+      diggityDog = new DFrame();
     }
     
 }

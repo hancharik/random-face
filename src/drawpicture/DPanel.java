@@ -19,6 +19,11 @@ import javax.swing.JPanel;
  */
 public class DPanel extends JComponent {
 
+    
+    Color hair;
+    
+    
+    
     public DPanel() {
 
         super();
@@ -33,7 +38,8 @@ public class DPanel extends JComponent {
     public void paintComponent(Graphics g){
         
        // g.fillRect(100, 100, 100, 100);
-       g.setColor(Color.yellow);
+       hair = new Color(10,10,10);
+       g.setColor(hair);
         g.fillOval(200,200,200,200);
         g.setColor(Color.green);
         g.drawOval(210,210,180,190);

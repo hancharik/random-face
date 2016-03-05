@@ -30,7 +30,7 @@ public class DFrame extends JFrame{
     
     
     
-    public DFrame(){
+    public DFrame(int x, int y){
         
        
         super ("Random Face Drawing Test");
@@ -44,9 +44,8 @@ public class DFrame extends JFrame{
                 setDefaultCloseOperation(EXIT_ON_CLOSE);
 	        setSize (lsize, hsize);
                //setSize (1920, 1080);
-                 Random rand = new Random();
-               int x = 1 + rand.nextInt(1700);
-               int y = 1 + rand.nextInt(800);
+                 
+               
                setLocation(x,y);
                
                

@@ -16,13 +16,13 @@ public class DrawPicture {
      public static  DFrame diggityDog;// = new DFrame();
      public static int size = 102; // RIGHT NOW 100 IS MINIMUM, or else it breaks... tricky, (not difficult, should be obvious) don't have time to find
      public static int speed = 6000; // in miliseconds
-     public static int thisManyFaces = 100;
+     public static int thisManyFaces = 1;
      
     public static void main(String[] args) {
         
         
-        //randomPlacement();
-        tiledPlacement();
+       // randomPlacement();
+       tiledPlacement();
       
     }  // end main
     

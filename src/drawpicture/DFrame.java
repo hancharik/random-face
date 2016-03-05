@@ -24,6 +24,8 @@ public class DFrame extends JFrame{
     
     public DPanel dPanel;// = new GameJPanel();
    public PicPanel pic;//  = new PicPanel();
+   public Ninja ninja;// = new Ninja();
+   public Monkey monkey;// = new Monkey();
     public int size = drawpicture.DrawPicture.size;
     private int lsize = size*21/10;
     private int hsize = size*22/10;
@@ -35,9 +37,20 @@ public class DFrame extends JFrame{
        
         super ("Random Face Drawing Test");
                 getContentPane().setLayout(new BorderLayout());
+                
+                Random rand = new Random();
+                int xfactor = 1 + rand.nextInt(1);
+                switch(xfactor){
+                    
+                    case 1 : pic  = new PicPanel(); getContentPane().add(pic,"Center"); break;
+                    case 2 : ninja = new Ninja(); getContentPane().add(ninja,"Center"); break;
+                    case 3 :  monkey = new Monkey(); getContentPane().add(monkey,"Center"); break;
+                }
                // dPanel = new DPanel();
-               pic  = new PicPanel();
-              getContentPane().add(pic,"Center");
+              // pic  = new PicPanel();
+              // ninja = new Ninja();
+              // monkey = new Monkey();
+              
                //  gamePanel.createScreen();   
               
 		//getContentPane().add(skyPanel,"Center");

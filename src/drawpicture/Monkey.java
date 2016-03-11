@@ -36,7 +36,8 @@ public class Monkey extends JPanel implements ActionListener {
     
     String race;// = "human";
     
-    Color hair;
+    Color wangsBlue = new Color(162, 223, 254);
+    Color headOutline;
     Color skin;
     Color line;
     Color notskin;
@@ -56,7 +57,7 @@ public class Monkey extends JPanel implements ActionListener {
     
     int headsize;
     int skinsize;
-    int hairthickness;
+    int headOutlinethickness;
     int mouthThickness;
     int mouthWidth;
     int eyeSize;
@@ -113,7 +114,7 @@ public class Monkey extends JPanel implements ActionListener {
 
     private void setVariables() {
 
-        hair = new Color(10, 10, 10);
+        headOutline = new Color(10, 10, 10);
        // skin = new Color(255, 175, 175);
         
         
@@ -134,11 +135,12 @@ public class Monkey extends JPanel implements ActionListener {
         shirtout = new Color(0, 0, 175);
         shirtfill = new Color(0, 175, 175);
 
-        hairthickness = 10;
+       
 
         headsize = drawpicture.DrawPicture.size;// 100;
-        skinsize = headsize - hairthickness;
-
+        headOutlinethickness = (int)(.08*headsize);// + x;
+        skinsize = headsize - headOutlinethickness;
+        
      
          int tenth = (int)Math.ceil(headsize /10);
           int hundredth = (int)Math.ceil(headsize / 100);
@@ -156,8 +158,8 @@ public class Monkey extends JPanel implements ActionListener {
         eyeRy = headY * eyeRyi / 10;
         eyeLx = headX * eyeLxi / 10;
         eyeLy = headY * eyeLyi / 10;
-        skinX = headX + (hairthickness / 2);
-        skinY = headY + (hairthickness / 2);
+        skinX = headX + (headOutlinethickness / 2);
+        skinY = headY + (headOutlinethickness / 2);
 
         shirtOutX = headX - (int)(.48*headsize);
         shirtOutY =  headY + (int)(.80*headsize);
@@ -186,7 +188,7 @@ public class Monkey extends JPanel implements ActionListener {
         int r = 1 + rand.nextInt(255);
         int g = 1 + rand.nextInt(255);
         int b = 1 + rand.nextInt(255);
-        hair = new Color(0, 0, 0);
+        headOutline = new Color(0, 0, 0);
         
           
         // real skin tones
@@ -259,29 +261,30 @@ public class Monkey extends JPanel implements ActionListener {
         notskin = new Color(g, b, b);
         line = new Color(0, 0, 0);
         shirtout = new Color(0,0,0);
-        shirtfill = new Color(0,0,0);//  there can be all kind of colored ninjas, but for now, black...    new Color(g,b,r);
+        shirtfill = skin;//new Color(0,0,0);//  there can be all kind of colored ninjas, but for now, black...    new Color(g,b,r);
         int x = 1 + rand.nextInt(20) - 4;
 
-        hairthickness = 4;// + x;
+       
         x = 1 + rand.nextInt(420) + 160;
          headsize = drawpicture.DrawPicture.size;
-        skinsize = headsize - hairthickness;
-        
+              headOutlinethickness = (int)(.08*headsize);// + x;
+        skinsize = headsize - headOutlinethickness;
+    
         
         int hundredth = (int)Math.ceil(headsize / 100);
-        mouthThickness = (int)(.04*headsize);// = hundredth + rand.nextInt(2 * hundredth) ;
+        mouthThickness = (int)(.02*headsize);// = hundredth + rand.nextInt(2 * hundredth) ;
        // System.out.println("mouthThickness"+mouthThickness);
         int tenth = (int)Math.ceil(headsize /10);
-        mouthWidth = (int)(.20*headsize);// mouthWidth = (int)(headsize / 2) + (1 + rand.nextInt(tenth) - (tenth / 2));//mouthWidth = headsize / 2;
+        mouthWidth = (int)(.44*headsize);// mouthWidth = (int)(headsize / 2) + (1 + rand.nextInt(tenth) - (tenth / 2));//mouthWidth = headsize / 2;
         
         
         
-        eyeSize = (int)(.06*headsize);//= 1 + rand.nextInt(3 * hundredth) + (2 * hundredth);
+        eyeSize = (int)(.04*headsize);//= 1 + rand.nextInt(3 * hundredth) + (2 * hundredth);
 
         headX = headsize / 2 ;
         headY = headsize / 2 ;
         x = 1 + rand.nextInt(2) - 1;
-        mouthX = headX * (mouthXi + x) / 8;
+        mouthX = headX * (mouthXi + x) / 10;
         x = 1 + rand.nextInt(2) - 1;
         mouthY = headY * (mouthYi + x) / 10;
         x = 1 + rand.nextInt(2) - 1;
@@ -293,8 +296,8 @@ public class Monkey extends JPanel implements ActionListener {
         x = 1 + rand.nextInt(2) - 1;
         eyeLy = headY * (eyeLyi + x) / 10;
         x = 1 + rand.nextInt(2) - 1;
-        skinX = headX + (hairthickness / 2);
-        skinY = headY + (hairthickness / 2);
+        skinX = headX + (headOutlinethickness / 2);
+        skinY = headY + (headOutlinethickness / 2);
 
         
         shirtOutX = headX  - (int)(.46*headsize);
@@ -367,37 +370,97 @@ public class Monkey extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
 
         // draw background 
-        Color wangsBlue = new Color(162, 223, 254);
+       // Color wangsBlue = new Color(162, 223, 254);
         g.setColor(wangsBlue);
         g.fillRect(0, 0,1920,1080);
         
         
         
-        // draw shirt outline
+        /* draw tail outline
+        g.setColor(shirtout);
+        g.fillOval(shirtOutX , shirtOutY - (int)(.54*headsize), shirtOutSize, shirtOutSize);
+      
+           // draw tail skin
+        g.setColor(shirtfill);
+        g.fillOval(shirtFillX, shirtFillY - (int)(.54*headsize), shirtFillSize, shirtFillSize);
+        
+         // draw tail outline
+        g.setColor(shirtout);
+        g.fillOval(shirtOutX + (int)(.20*headsize) , shirtOutY - (int)(.42*headsize), shirtOutSize- (int)(.54*headsize), shirtOutSize- (int)(.54*headsize));
+        
+        
+          // draw tail outline edge
+        g.setColor(wangsBlue);
+        g.fillOval(shirtOutX + (int)(.24*headsize) , shirtOutY - (int)(.38*headsize), shirtOutSize- (int)(.54*headsize), shirtOutSize- (int)(.54*headsize));
+         g.fillRect((int)(.74*headsize),   (int)(.38*headsize),(int)(2.0*headsize),(int)(2.0*headsize));
+        
+     
+        */
+        
+        int tailOffset = (int)(1.340*headsize);
+        
+        
+          g.setColor(shirtout);
+        g.fillOval(shirtOutX + tailOffset, shirtOutY - (int)(.54*headsize), shirtOutSize, shirtOutSize);
+      
+           // draw tail skin
+        g.setColor(shirtfill);
+        g.fillOval(shirtFillX+ tailOffset, shirtFillY - (int)(.54*headsize), shirtFillSize, shirtFillSize);
+        
+         // draw tail outline
+        g.setColor(shirtout);
+        g.fillOval(shirtOutX + (int)(.20*headsize)+ tailOffset , shirtOutY - (int)(.42*headsize), shirtOutSize- (int)(.54*headsize), shirtOutSize- (int)(.54*headsize));
+        
+        
+          // draw tail outline edge
+        g.setColor(wangsBlue);
+        g.fillOval(shirtOutX + (int)(.24*headsize) + tailOffset, shirtOutY - (int)(.38*headsize), shirtOutSize- (int)(.54*headsize), shirtOutSize- (int)(.54*headsize));
+        // g.fillRect((int)(.74*headsize),   (int)(.38*headsize),(int)(2.0*headsize),(int)(2.0*headsize));
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+             // draw box to block out side of tail
         g.setColor(shirtout);
         g.fillOval(shirtOutX, shirtOutY, shirtOutSize, shirtOutSize);
-        // draw shirt
-        g.setColor(shirtfill);
-        g.fillOval(shirtFillX, shirtFillY, shirtFillSize, shirtFillSize);
         
         
         
         
-        // draw hair
-        g.setColor(hair);
+        
+        // draw headOutline
+        g.setColor(headOutline);
         g.fillOval(headX, headY, headsize, headsize);
         // outline for ears
          g.fillRoundRect((int)(.82*headX), (int)(1.68*headY), (int)(.14*headsize), (int)(.28*headsize), headX, headY + 60 );
          g.fillRoundRect((int)(2.93*headX), (int)(1.68*headY), (int)(.14*headsize), (int)(.28*headsize), headX, headY + 60 );
         
-        
+          // draw shirt
+        g.setColor(shirtfill);
+        g.fillOval(shirtFillX, shirtFillY, shirtFillSize, shirtFillSize);
         
         // draw face
         g.setColor(skin);
         g.fillOval(skinX, skinY, skinsize, skinsize);
         // draw ears
-        g.fillRoundRect((int)(.84*headX), (int)(1.72*headY), (int)(.12*headsize), (int)(.24*headsize), headX, headY + 60 );
-         g.fillRoundRect((int)(2.95*headX), (int)(1.72*headY),(int)(.12*headsize), (int)(.24*headsize), headX, headY + 60 );
+        g.fillRoundRect((int)(.86*headX), (int)(1.72*headY), (int)(.13*headsize), (int)(.22*headsize), headX, headY + 60 );
+         g.fillRoundRect((int)(2.92*headX), (int)(1.72*headY),(int)(.11*headsize), (int)(.22*headsize), headX, headY + 60 );
         
         
         // draw slit for eyes

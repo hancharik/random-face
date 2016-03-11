@@ -31,7 +31,7 @@ import javax.swing.Timer;
  *
  * @author mark
  */
-public class PicPanel extends JPanel implements ActionListener {
+public class Police extends JPanel implements ActionListener {
 
     
     String race;// = "human";
@@ -42,7 +42,10 @@ public class PicPanel extends JPanel implements ActionListener {
     Color notskin;
     Color shirtout;
     Color shirtfill;
-
+    Color shirtfill2;
+    Color shirtfill3;
+    
+    
     int headX;
     int headY;
     int skinX;
@@ -59,8 +62,7 @@ public class PicPanel extends JPanel implements ActionListener {
     int hairthickness;
     int mouthThickness;
     int mouthWidth;
-    int eyeSizel;
-    int eyeSizer;
+    int eyeSize;
     int shirtOutSize;
     int shirtFillSize;
     
@@ -95,7 +97,7 @@ public class PicPanel extends JPanel implements ActionListener {
 
     Timer t;
 
-    public PicPanel() {
+    public Police() {
 
         super(true);
         
@@ -134,7 +136,8 @@ public class PicPanel extends JPanel implements ActionListener {
         line = new Color(0, 0, 0);
         shirtout = new Color(0, 0, 175);
         shirtfill = new Color(0, 175, 175);
-
+        shirtfill2 = new Color(233, 175, 175);
+        shirtfill3 = new Color(233, 22, 175);
         hairthickness = 10;
 
         headsize = drawpicture.DrawPicture.size;// 100;
@@ -146,8 +149,8 @@ public class PicPanel extends JPanel implements ActionListener {
          // System.out.println("hundredth"+hundredth);
         mouthWidth = (int)(headsize / 2) + (rand.nextInt(tenth) - (tenth / 2));
          mouthThickness  = (int)Math.ceil(hundredth + rand.nextInt(2 * hundredth));  // mouthThickness  = 1 + rand.nextInt(3) + 1;
-        eyeSizel = (int)(.03*(headsize + rand.nextInt(headsize)));
-        eyeSizer =  (int)(.03*(headsize + rand.nextInt(headsize)));
+        eyeSize = 4 * hundredth;
+
         headX = headsize / 2;
         headY = headsize / 2;
 
@@ -260,7 +263,9 @@ public class PicPanel extends JPanel implements ActionListener {
         notskin = new Color(g, b, b);
         line = new Color(0, 0, 0);
         shirtout = new Color(0,0,0);
-        shirtfill = new Color(g,b,r);
+         shirtfill = new Color(g,b,r);// shirtfill = new Color(0,0,0);//  there can be all kind of colored ninjas, but for now, black...    new Color(g,b,r);
+         shirtfill2 = new Color(g,r,b);// shirtfill = new Color(0,0,0);//  there can be all kind of colored ninjas, but for now, black...    new Color(g,b,r);
+         shirtfill3 = new Color(b,g,r);// shirtfill = new Color(0,0,0);//  there can be all kind of colored ninjas, but for now, black...    new Color(g,b,r);
         int x = 1 + rand.nextInt(20) - 4;
 
         hairthickness = 10;// + x;
@@ -276,9 +281,8 @@ public class PicPanel extends JPanel implements ActionListener {
         mouthWidth = (int)(headsize / 2) + (1 + rand.nextInt(tenth) - (tenth / 2));//mouthWidth = headsize / 2;
         
         
-        eyeSizel = (int)(.03*(headsize + rand.nextInt(headsize)));
-        eyeSizer =  (int)(.03*(headsize + rand.nextInt(headsize)));
-        //eyeSize = 1 + rand.nextInt(3 * hundredth) + (2 * hundredth);
+        
+        eyeSize = 1 + rand.nextInt(3 * hundredth) + (2 * hundredth);
 
         headX = headsize / 2 ;
         headY = headsize / 2 ;
@@ -370,6 +374,11 @@ public class PicPanel extends JPanel implements ActionListener {
 
         // draw background 
         Color wangsBlue = new Color(162, 223, 254);
+        Color intergalacticPoliceBlue = new Color(14,40,95);// = new Color(162, 223, 254);
+        
+        shirtfill = intergalacticPoliceBlue;
+        
+        
         g.setColor(wangsBlue);
         g.fillRect(0, 0,1920,1080);
         
@@ -388,29 +397,89 @@ public class PicPanel extends JPanel implements ActionListener {
         // draw hair
         g.setColor(hair);
         g.fillOval(headX, headY, headsize, headsize);
-        // draw face
+        
+        
+        
+        
+        // draw face 
         g.setColor(skin);
         g.fillOval(skinX, skinY, skinsize, skinsize);
-
+        
+        
+        // draw first hat ring
+         g.setColor(shirtfill);
+        // g.fillRect((int)(1.34*headX), (int)(1.58*headY), (int)(.69*headsize), (int)(.18*headsize));
+        g.fillRoundRect((int)(0.94*headX), (int)(1.06*headY), (int)(0.96*headsize), (int)(.28*headsize), headX , headY  );
+        
+            // draw second turban ring
+         g.setColor(shirtfill);
+        // g.fillRect((int)(1.34*headX), (int)(1.58*headY), (int)(.69*headsize), (int)(.18*headsize));
+        g.fillRoundRect((int)(1.04*headX), (int)(0.79*headY), (int)(0.94*headsize), (int)(.28*headsize), headX , headY  );
+        
+          // draw first hat emblem
+         g.setColor(shirtfill2);
+        // g.fillRect((int)(1.34*headX), (int)(1.58*headY), (int)(.69*headsize), (int)(.18*headsize));
+        g.fillRoundRect((int)(1.42*headX), (int)(1.12*headY), (int)(.26*headsize), (int)(.08*headsize), headX , headY  );
+        
+        
+          // draw second hat emblem
+       //  g.setColor(shirtfill3);
+         g.setColor(Color.YELLOW);
+        // g.fillRect((int)(1.34*headX), (int)(1.58*headY), (int)(.69*headsize), (int)(.18*headsize));
+        g.fillRoundRect((int)(1.52*headX), (int)(1.04*headY), (int)(.16*headsize), (int)(.19*headsize), headX , headY  );
+        
+        
+        
+                // draw first  shirt emblem
+              //  g.setColor(shirtfill3);
+         g.setColor(Color.YELLOW);
+        // g.fillRect((int)(2.54*headX), (int)(3.26*headY), (int)(.28*headsize), (int)(.14*headsize));
+        g.fillRoundRect((int)(2.54*headX), (int)(3.26*headY), (int)(.28*headsize), (int)(.14*headsize), headX , headY  );    
+        
+            // draw first  shirt emblem
+         g.setColor(shirtfill2);
+        // g.fillRect((int)(2.54*headX), (int)(3.26*headY), (int)(.22*headsize), (int)(.12*headsize));
+        g.fillRoundRect((int)(2.54*headX), (int)(3.26*headY), (int)(.22*headsize), (int)(.12*headsize), headX , headY  );
+        
+        
+          // draw second shirt   emblem
+          //  g.setColor(shirtfill3);
+         g.setColor(Color.YELLOW);
+        // g.fillRect((int)(1.34*headX), (int)(1.58*headY), (int)(.69*headsize), (int)(.18*headsize));
+        g.fillRoundRect((int)(2.66*headX), (int)(3.32*headY), (int)(.18*headsize), (int)(.10*headsize), headX , headY  );
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // set color
         g.setColor(line);
 
         //draw left eye
-        g.fillOval(eyeLx, eyeLy, eyeSizel, eyeSizel);
+        g.fillOval(eyeLx, eyeLy, eyeSize, eyeSize);
         // draw right eye
-        g.fillOval(eyeRx, eyeRy, eyeSizer, eyeSizer);
+        g.fillOval(eyeRx, eyeRy, eyeSize, eyeSize);
 
-        // draw mouth
+        // Don't draw a mouth!
         g.fillRect(mouthX, mouthY, mouthWidth, mouthThickness);
         
-        
+       
         
         
         // draw label
         g.setFont(new Font("TimesRoman", Font.PLAIN, (int)(.24*headsize))); 
-         int stringX = (int)(.64*headsize);
-         int stringY = (int)(.28*headsize);
-        g.drawString(race, stringX,stringY);
+         int stringX = (int)(.32*headsize);
+         int stringY = (int)(.20*headsize);
+        g.drawString(race + " police", stringX,stringY);
 
     }
 

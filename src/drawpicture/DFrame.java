@@ -26,6 +26,8 @@ public class DFrame extends JFrame{
    public PicPanel pic;//  = new PicPanel();
    public Ninja ninja;// = new Ninja();
    public Monkey monkey;// = new Monkey();
+   public Merchant merchant;// = new Monkey();
+   public Police police;
     public int size = drawpicture.DrawPicture.size;
     private int lsize = size*21/10;
     private int hsize = size*22/10;
@@ -39,12 +41,14 @@ public class DFrame extends JFrame{
                 getContentPane().setLayout(new BorderLayout());
                 
                 Random rand = new Random();
-                int xfactor = 1 + rand.nextInt(1);
+                int xfactor = 1 + rand.nextInt(drawpicture.DrawPicture.type);
                 switch(xfactor){
                     
                     case 1 : pic  = new PicPanel(); getContentPane().add(pic,"Center"); break;
                     case 2 : ninja = new Ninja(); getContentPane().add(ninja,"Center"); break;
                     case 3 :  monkey = new Monkey(); getContentPane().add(monkey,"Center"); break;
+                    case 4 :  merchant = new Merchant(); getContentPane().add(merchant,"Center"); break;
+                    case 5 :  police = new Police(); getContentPane().add(police,"Center"); break;
                 }
                // dPanel = new DPanel();
               // pic  = new PicPanel();

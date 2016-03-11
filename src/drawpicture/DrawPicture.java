@@ -17,12 +17,18 @@ public class DrawPicture {
      public static int size = 102; // RIGHT NOW 100 IS MINIMUM, or else it breaks... tricky, (not difficult, should be obvious) don't have time to find
      public static int speed = 6000; // in miliseconds
      public static int thisManyFaces = 1;
+     public static int type = 5;
+     public static int choice = 2;// 1 for random, 2 for wall at 102 size
      
     public static void main(String[] args) {
         
-        
-       // randomPlacement();
-       tiledPlacement();
+        switch(choice){
+            case 1:  randomPlacement(); break;  
+            case 2: tiledPlacement(); break;  
+            
+        }
+     //  randomPlacement();
+   // tiledPlacement();
       
     }  // end main
     
